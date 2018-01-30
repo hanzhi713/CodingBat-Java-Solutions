@@ -1,7 +1,9 @@
 package problems;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.UnaryOperator;
 
 import org.junit.jupiter.api.Test;
 
@@ -21,11 +23,35 @@ public class Functional_2 {
     }
 
     @Test
-    public void test_no34(){
+    public void test_no34() {
+        assertEquals(no34(th("a", "bb", "ccc")).equals(th("a", "bb")), true);
+        assertEquals(no34(th("a", "bb", "ccc", "dddd")).equals(th("a", "bb")), true);
+        assertEquals(no34(th("ccc", "dddd", "apple")).equals(th("apple")), true);
+    }
 
-        assertEquals(no34(Arrays.asList("a", "bb", "ccc")).equals(Arrays.asList("a", "bb")), true);
-        assertEquals(Arrays.equals(new String[]{"a", "bb", "ccc", "dddd"}, new String[]{"a", "bb"}), true);
-        assertEquals(Arrays.equals(new String[]{"ccc", "dddd", "apple"}, new String[]{"apple"}), true);
+    /*
+    Given a list of integers, return a list of those numbers squared and the product added to 10,
+    omitting any of the resulting numbers that end in 5 or 6.
+    square56([3, 1, 4]) → [19, 11]
+    square56([1]) → [11]
+    square56([2]) → [14]
+    * */
+    public List<Integer> square56(List<Integer> nums) {
+        nums.replaceAll(n -> n * n + 10);
+        nums.removeIf(n -> n % 10 == 5 || n % 10 == 6);
+        return nums;
+    }
+
+    @Test
+    public void test_square56(){
+        assertEquals(square56(th(3, 1, 4)).equals(th(19, 11)), true);
+        assertEquals(square56(th(1)).equals(th(11)), true);
+        assertEquals(square56(th(2)).equals(th(14)), true);
+    }
+
+    // Test Helper
+    private <T> List<T> th(T... args) {
+        return new ArrayList<>(Arrays.asList(args));
     }
 
 }
