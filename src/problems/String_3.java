@@ -2,6 +2,8 @@ package problems;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.stream.IntStream;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class String_3 {
@@ -22,6 +24,8 @@ public class String_3 {
             }
         }
         return sum;
+        // actually can be refactored to (automatically done by intellij...)
+        // return IntStream.range(0, str.length()).filter(i -> Character.isDigit(str.charAt(i))).map(i -> Integer.parseInt(str.substring(i, i + 1))).sum();
     }
 
     @Test
@@ -42,12 +46,11 @@ public class String_3 {
     public int maxBlock(String str) {
         if (str.length() == 0) return 0;
         int count = 1;
-        int maxCount = 0;
+        int maxCount = 1;
         char blockStart = str.charAt(0);
         for (int i = 1; i < str.length(); i++) {
             if (str.charAt(i) == blockStart) {
-                count++;
-                if (count > maxCount) maxCount = count;
+                if (++count > maxCount) maxCount = count;
             } else {
                 blockStart = str.charAt(i);
                 count = 1;

@@ -56,15 +56,19 @@ public class Map_2 {
     wordAppend(["a", "", "a"]) , "a"
      */
     public String wordAppend(String[] strings) {
+        String result = "";
+        if (strings.length == 0) return result;
         Map<String, Integer> strStats = new HashMap<>();
         strStats.put(strings[0], 0);
-        String result = "";
         for (String s : strings){
             if (strStats.containsKey(s)){
                 int count =  strStats.get(s);
-                strStats.replace(s, count + 1);
+                strStats.replace(s, ++count);
                 if (count % 2 == 0)
                     result += s;
+            }
+            else{
+                strStats.put(s, 1);
             }
         }
         return result;

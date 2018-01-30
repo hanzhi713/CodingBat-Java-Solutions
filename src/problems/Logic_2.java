@@ -15,10 +15,14 @@ public class Logic_2 {
     closeFar(4, 1, 3) , true
     */
     public boolean closeFar(int a, int b, int c) {
-        if (Math.abs(b - a) <= 1) {
-            return Math.abs(c - a) >= 2 && Math.abs(c - b) >= 2;
-        }
-        return Math.abs(c - a) <= 1 && Math.abs(b - a) >= 2 && Math.abs(b - c) >= 2;
+        // one line form
+        return Math.abs(b - a) <= 1 ? Math.abs(c - a) >= 2 && Math.abs(c - b) >= 2 : Math.abs(c - a) <= 1 && Math.abs(b - a) >= 2 && Math.abs(b - c) >= 2;
+
+        // human friendly form
+//        if (Math.abs(b - a) <= 1) {
+//            return Math.abs(c - a) >= 2 && Math.abs(c - b) >= 2;
+//        }
+//        return Math.abs(c - a) <= 1 && Math.abs(b - a) >= 2 && Math.abs(b - c) >= 2;
     }
 
     @Test
@@ -38,7 +42,20 @@ public class Logic_2 {
     makeChocolate(4, 1, 7) , 2
     * */
     public int makeChocolate(int small, int big, int goal) {
-        return goal % 5 == 0 ? -1 : goal % 5;
+        // one line form
+        return (small + big * 5 < goal || small < goal % 5) ? -1 : big*5 < goal ? goal - big*5 : goal % 5;
+
+        // human friendly form
+//        if (small + big * 5 < goal)
+//            return -1;
+//        if (small < goal % 5)
+//            return -1;
+//
+//        if (big*5 < goal)
+//            return goal - big*5;
+//        else
+//            return goal % 5;
+
     }
 
     @Test
