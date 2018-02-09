@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Array_3 {
@@ -27,9 +28,9 @@ public class Array_3 {
 
     @Test
     public void test_squareUp() {
-        assertEquals(Arrays.equals(squareUp(3), new int[]{0, 0, 1, 0, 2, 1, 3, 2, 1}), true);
-        assertEquals(Arrays.equals(squareUp(2), new int[]{0, 1, 2, 1}), true);
-        assertEquals(Arrays.equals(squareUp(4), new int[]{0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 2, 1, 4, 3, 2, 1}), true);
+        assertArrayEquals(squareUp(3), new int[]{0, 0, 1, 0, 2, 1, 3, 2, 1});
+        assertArrayEquals(squareUp(2), new int[]{0, 1, 2, 1});
+        assertArrayEquals(squareUp(4), new int[]{0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 2, 1, 4, 3, 2, 1});
     }
 
     /*
